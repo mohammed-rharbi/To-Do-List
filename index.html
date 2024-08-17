@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project and Task Management</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <section id="project-section">
+      <h2>Create a New Project</h2>
+      <form id="project-form">
+        <input type="text" id="project-name" placeholder="Project Name" required>
+        <button type="submit">Create Project</button>
+      </form>
+    </section>
+
+    <section id="projects-container">
+    </section>
+  </div>
+
+  <div id="task-form-modal" class="modal" style="display:none;">
+    <div class="modal-content">
+      <h2>Create a New Task</h2>
+      <input type="text" id="task-title" placeholder="Task Title" required>
+      <textarea id="task-description" placeholder="Task Description"></textarea>
+      <select id="task-priority">
+        <option value="high">High</option>
+        <option value="medium">Medium</option>
+        <option value="low">Low</option>
+      </select>
+      <select id="task-status">
+        <option value="todo">To Do</option>
+        <option value="in-progress">In Progress</option>
+      </select>
+      <button id="save-task-btn">Save Task</button>
+      <button id="cancel-task-btn">Cancel</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
