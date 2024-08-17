@@ -6,10 +6,8 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentProjectId = null;
     let editTaskIndex = null;
 
-    // Display existing projects from localStorage
     projects.forEach(project => addProjectToDOM(project));
 
-    // Handle project creation
     projectForm.addEventListener('submit', (e) => {
         e.preventDefault();
         const projectName = document.getElementById('project-name').value.trim();
@@ -26,7 +24,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Function to add a project card to the DOM
     function addProjectToDOM(project) {
         const projectCard = document.createElement('div');
         projectCard.className = 'project-card';
@@ -41,7 +38,6 @@ document.addEventListener('DOMContentLoaded', () => {
         project.tasks.forEach((task, index) => addTaskToDOM(project.id, task, index));
     }
 
-    // Open the task form modal for creating or editing a task
     window.openTaskForm = function (projectId, taskIndex = null) {
         currentProjectId = projectId;
         editTaskIndex = taskIndex;
@@ -60,13 +56,11 @@ document.addEventListener('DOMContentLoaded', () => {
         taskFormModal.style.display = 'flex';
     };
 
-    // Close the task form modal
     document.getElementById('cancel-task-btn').addEventListener('click', () => {
         taskFormModal.style.display = 'none';
         resetTaskForm();
     });
 
-    // Save or update task
     document.getElementById('save-task-btn').addEventListener('click', () => {
         const taskTitle = document.getElementById('task-title').value.trim();
         const taskDescription = document.getElementById('task-description').value.trim();
@@ -97,7 +91,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Add a task to the DOM
     function addTaskToDOM(projectId, task, taskIndex) {
         const taskList = document.getElementById(`task-list-${projectId}`);
         const taskItem = document.createElement('div');
@@ -116,7 +109,6 @@ document.addEventListener('DOMContentLoaded', () => {
         taskList.appendChild(taskItem);
     }
 
-    // Update a task in the DOM
     function updateTaskInDOM(projectId, taskIndex, task) {
         const taskList = document.getElementById(`task-list-${projectId}`);
         const taskItem = taskList.children[taskIndex];
@@ -134,21 +126,17 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Toggle the done status of a task
     window.toggleTaskDone = function (projectId, taskIndex) {
         const project = projects.find(p => p.id === projectId);
         const task = project.tasks[taskIndex];
         task.done = !task.done;
         task.status = task.done ? 'done' : 'todo';
 
-        // Update the DOM
         updateTaskInDOM(projectId, taskIndex, task);
         
-        // Save the updated tasks to localStorage
         saveProjectsToLocalStorage(projects);
     };
 
-    // Delete a task with confirmation
     window.deleteTask = function (projectId, taskIndex) {
         if (confirm("Are you sure you want to delete this task?")) {
             const project = projects.find(p => p.id === projectId);
@@ -158,7 +146,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // Delete a project
     window.deleteProject = function (projectId) {
         if (confirm("Are you sure you want to delete this project?")) {
             projects = projects.filter(p => p.id !== projectId);
@@ -168,18 +155,15 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // Save projects to localStorage
     function saveProjectsToLocalStorage(projects) {
         localStorage.setItem('projects', JSON.stringify(projects));
     }
 
-    // Load projects from localStorage
     function loadProjectsFromLocalStorage() {
         const projects = localStorage.getItem('projects');
         return projects ? JSON.parse(projects) : [];
     }
 
-    // Reset the task form fields
     function resetTaskForm() {
         document.getElementById('task-title').value = '';
         document.getElementById('task-description').value = '';
