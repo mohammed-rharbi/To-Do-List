@@ -67,7 +67,18 @@ document.addEventListener('DOMContentLoaded', () => {
         const taskPriority = document.getElementById('task-priority').value;
         const taskStatus = document.getElementById('task-status').value;
 
-        if (taskTitle) {
+
+
+        if(!taskTitle){
+            document.getElementById('er-name').style.display = 'block';
+        }
+
+        if(!taskDescription){
+            document.getElementById('er-desc').style.display = 'block';
+        }
+
+        
+        if (taskTitle && taskDescription) {
             const project = projects.find(p => p.id === currentProjectId);
 
             if (editTaskIndex === null) {
@@ -87,7 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
             taskFormModal.style.display = 'none';
             resetTaskForm();
         } else {
-            alert("Please enter a task title.");
+            alert("Please enter a task detales.");
         }
     });
 
