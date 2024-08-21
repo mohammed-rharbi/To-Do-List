@@ -108,16 +108,24 @@ body {
     margin-right: 5px;
 }
 
+.task-item button:nth-child(5) { 
+    background-color: #fa060e;
+}
+
+.task-item button:hover:nth-child(5) {
+    background-color: #9e2121;
+}
+
 .task-item button:hover {
     background-color: #0056b3;
 }
 
 .task-item button:last-child {
-    background-color: #dc3545;
+    background-color: #10c251;
 }
 
 .task-item button:last-child:hover {
-    background-color: #c82333;
+    background-color: #4cb30c;
 }
 
 /* Modal Styles */
@@ -175,7 +183,7 @@ body {
 
 
 .task-done {
-    text-decoration: line-through;
+    text-decoration: line-through 3px ;
     background-color: #d3ffd3;
 }
 
