@@ -1,4 +1,7 @@
+
+
 document.addEventListener('DOMContentLoaded', () => {
+
     let projects = loadProjectsFromLocalStorage();
     const projectForm = document.getElementById('project-form');
     const projectsContainer = document.getElementById('projects-container');
@@ -12,6 +15,10 @@ document.addEventListener('DOMContentLoaded', () => {
         e.preventDefault();
         const projectName = document.getElementById('project-name').value.trim();
 
+        if(!projectName){
+            document.getElementById('er-proj').style.display = 'block';
+        }
+
         if (projectName) {
             const projectId = Date.now();
             const project = { id: projectId, name: projectName, tasks: [] };
@@ -24,6 +31,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+
+
+
+
     function addProjectToDOM(project) {
         const projectCard = document.createElement('div');
         projectCard.className = 'project-card';
@@ -35,8 +46,14 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
         projectsContainer.appendChild(projectCard);
 
+
         project.tasks.forEach((task, index) => addTaskToDOM(project.id, task, index));
     }
+
+
+
+
+
 
     window.openTaskForm = function (projectId, taskIndex = null) {
         currentProjectId = projectId;
@@ -56,10 +73,17 @@ document.addEventListener('DOMContentLoaded', () => {
         taskFormModal.style.display = 'flex';
     };
 
+
+
+
     document.getElementById('cancel-task-btn').addEventListener('click', () => {
         taskFormModal.style.display = 'none';
         resetTaskForm();
     });
+
+
+
+
 
     document.getElementById('save-task-btn').addEventListener('click', () => {
         const taskTitle = document.getElementById('task-title').value.trim();
@@ -102,6 +126,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+
+
+
+
     function addTaskToDOM(projectId, task, taskIndex) {
         const taskList = document.getElementById(`task-list-${projectId}`);
         const taskItem = document.createElement('div');
@@ -120,6 +148,8 @@ document.addEventListener('DOMContentLoaded', () => {
         taskList.appendChild(taskItem);
     }
 
+
+
     function updateTaskInDOM(projectId, taskIndex, task) {
         const taskList = document.getElementById(`task-list-${projectId}`);
         const taskItem = taskList.children[taskIndex];
@@ -137,6 +167,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+
+
+
     window.toggleTaskDone = function (projectId, taskIndex) {
         const project = projects.find(p => p.id === projectId);
         const task = project.tasks[taskIndex];
@@ -148,6 +181,9 @@ document.addEventListener('DOMContentLoaded', () => {
         saveProjectsToLocalStorage(projects);
     };
 
+
+
+
     window.deleteTask = function (projectId, taskIndex) {
         if (confirm("Are you sure you want to delete this task?")) {
             const project = projects.find(p => p.id === projectId);
@@ -156,6 +192,9 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById(`task-list-${projectId}`).children[taskIndex].remove();
         }
     };
+
+
+
 
     window.deleteProject = function (projectId) {
         if (confirm("Are you sure you want to delete this project?")) {
@@ -166,14 +205,21 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
+
+
     function saveProjectsToLocalStorage(projects) {
         localStorage.setItem('projects', JSON.stringify(projects));
     }
+
+
+
 
     function loadProjectsFromLocalStorage() {
         const projects = localStorage.getItem('projects');
         return projects ? JSON.parse(projects) : [];
     }
+
+  
 
     function resetTaskForm() {
         document.getElementById('task-title').value = '';

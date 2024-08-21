@@ -64,9 +64,18 @@ body {
     margin-top: 10px;
 }
 
+.project-card button:nth-child(3) {
+    background-color: #ff0000;
+}
+
+.project-card button:nth-child(3):hover {
+    background-color: #992626;
+}
+
 .project-card button:hover {
     background-color: #218838;
 }
+
 
 /* Task List */
 .task-list {
@@ -175,3 +184,4 @@ body {
     color: red;
     display: none   ;
 }
+
