@@ -21,19 +21,37 @@ body {
 }
 
 #project-form input {
-    padding: 10px;
-    margin-right: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    flex: 1;
+    padding: 12px 15px;
+    border: 2px solid #007bff;
+    border-radius: 8px;
+    font-size: 1rem;
+    width: 70%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#project-form input:focus {
+    border-color: #0056b3;
+    box-shadow: 0 4px 8px rgba(0, 123, 255, 0.3);
+    outline: none;
 }
 
 #project-form button {
-    padding: 10px 20px;
+    padding: 12px 25px;
     border: none;
-    background-color: #007bff;
+    background-color: #28a745;
     color: white;
-    border-radius: 4px;
+    border-radius: 8px;
+    font-size: 1rem;
     cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#project-form button:hover {
+    background-color: #218838;
+    box-shadow: 0 4px 8px rgba(40, 167, 69, 0.3);
 }
 
 #project-form button:hover {
@@ -114,7 +132,7 @@ body {
 
 .task-item button:hover:nth-child(5) {
     background-color: #9e2121;
-}
+}a
 
 .task-item button:hover {
     background-color: #0056b3;
@@ -193,3 +211,25 @@ body {
     display: none   ;
 }
 
+
+
+
+        /* Cool Header */
+        header {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(rgba(0, 123, 255, 0.8), rgba(0, 123, 255, 0.8)), url('https://source.unsplash.com/1600x900/?productivity') no-repeat center center;
+            background-size: cover;
+            color: #fff;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }

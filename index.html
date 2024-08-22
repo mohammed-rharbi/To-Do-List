@@ -1,47 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>To Do List</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List</title>
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-  <div class="container">
-    <section id="project-section">
-      <h2>Create a New Project</h2>
-      <form id="project-form">
-        <input type="text" id="project-name" placeholder="Project Name" required>
-        <p class="er" id="er-proj">Please Enter Valide Project Name</p>
-        <button type="submit">Create Project</button>
-      </form>
-    </section>
 
-    <section id="projects-container">
-    </section>
-  </div>
+  <header>
+    <h1>Task List Management</h1>
+</header>
 
-  <div id="task-form-modal" class="modal" style="display:none;">
-    <div class="modal-content">
-      <h2>Create a New Task</h2>
-      <input type="text" id="task-title" placeholder="Task Title" required>
-      <p class="er" id="er-name">Please Enter Valide Task Name</p>
-      <textarea id="task-description" placeholder="Task Description" required></textarea>
-      <p class="er" id="er-desc">Please Enter Valide Task Description</p>
-      <select id="task-priority">
-        <option value="high">High</option>
-        <option value="medium">Medium</option>
-        <option value="low">Low</option>
-      </select>
-      <select id="task-status">
-        <option value="todo">To Do</option>
-        <option value="in-progress">In Progress</option>
-      </select>
-      <button id="save-task-btn">Save Task</button>
-      <button id="cancel-task-btn">Cancel</button>
+    <div class="container">
+        <section id="project-section">
+            <h2>Create a New Project</h2>
+            <form id="project-form">
+                <input type="text" id="project-name" placeholder="Project Name" required>
+                <p class="er" id="er-proj">Please Enter Valid Project Name</p>
+                <button type="submit">Create Project</button>
+            </form>
+        </section>
+
+        <section id="projects-container">
+        </section>
     </div>
-  </div>
 
-  <script src="script.js"></script>
+    <div id="task-form-modal" class="modal">
+        <div class="modal-content">
+            <h2>Create a New Task</h2>
+            <input type="text" id="task-title" placeholder="Task Title" required>
+            <p class="er" id="er-name">Please Enter Valid Task Name</p>
+            <textarea id="task-description" placeholder="Task Description" required></textarea>
+            <p class="er" id="er-desc">Please Enter Valid Task Description</p>
+            <select id="task-priority">
+                <option value="high">High</option>
+                <option value="medium">Medium</option>
+                <option value="low">Low</option>
+            </select>
+            <select id="task-status">
+                <option value="todo">To Do</option>
+                <option value="in-progress">In Progress</option>
+            </select>
+            <button id="save-task-btn">Save Task</button>
+            <button id="cancel-task-btn">Cancel</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
 </body>
+
 </html>
